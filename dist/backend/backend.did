@@ -1,0 +1,52 @@
+type Timestamp = int;
+type TagCount = 
+ record {
+   count: nat;
+   tag: Tag;
+ };
+type Tag = text;
+type NoteLink = 
+ record {
+   fromNoteId: NoteId;
+   toNoteId: NoteId;
+ };
+type NoteId = text;
+type Note = 
+ record {
+   content: text;
+   createdAt: Timestamp;
+   folderId: opt FolderId;
+   id: NoteId;
+   tags: vec Tag;
+   title: text;
+   updatedAt: Timestamp;
+ };
+type FolderId = text;
+type Folder = 
+ record {
+   createdAt: Timestamp;
+   id: FolderId;
+   name: text;
+   parentId: opt FolderId;
+ };
+service : {
+  createFolder: (name: text, parentId: opt FolderId) -> (Folder);
+  createNote: (title: text, content: text, folderId: opt FolderId, tags:
+   vec Tag) -> (Note);
+  deleteFolder: (id: FolderId) -> (bool);
+  deleteNote: (id: NoteId) -> (bool);
+  getAllFolders: () -> (vec Folder) query;
+  getAllLinks: () -> (vec NoteLink) query;
+  getAllNotes: () -> (vec Note) query;
+  getAllTags: () -> (vec TagCount) query;
+  getBacklinks: (noteId: NoteId) -> (vec NoteLink) query;
+  getLinksByNote: (noteId: NoteId) -> (vec NoteLink) query;
+  getNoteById: (id: NoteId) -> (opt Note) query;
+  getNotesByFolder: (folderId: FolderId) -> (vec Note) query;
+  getNotesByTag: (tag: Tag) -> (vec Note) query;
+  renameFolder: (id: FolderId, name: text) -> (opt Folder);
+  searchNotes: (searchQuery: text) -> (vec Note) query;
+  setNoteLinks: (fromNoteId: NoteId, toNoteIds: vec NoteId) -> ();
+  updateNote: (id: NoteId, title: text, content: text, folderId:
+   opt FolderId, tags: vec Tag) -> (opt Note);
+}

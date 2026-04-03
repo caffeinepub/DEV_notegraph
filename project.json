@@ -1,0 +1,26 @@
+{
+  "overview": "A polished personal knowledge base for collecting, organizing, and linking notes. Features a rich text editor with [[wikilinks]], automatic link detection, folder and tag organization, full-text search, SVG graph visualization, and export to Markdown or JSON.",
+  "features": [
+    "Rich text note editor with headings, lists, and code blocks",
+    "[[Wikilink]] syntax for linking notes with autocomplete suggestions",
+    "SVG graph view showing connected notes with pan/zoom",
+    "Backlinks panel showing all notes that link to the current note",
+    "Sidebar with folder tree, tags, and searchable note list",
+    "Full-text search modal (Cmd/Ctrl+K) with instant filtering",
+    "Auto-save with 2-second debounce and force-save shortcut",
+    "Export notes as Markdown or JSON (single note or all notes)",
+    "Keyboard shortcuts: Cmd+N, Cmd+K, Cmd+S, Cmd+Shift+L",
+    "Three-column responsive layout with dark/light mode"
+  ],
+  "category": "productivity",
+  "tags": [
+    "knowledge-base",
+    "notes",
+    "productivity",
+    "wiki",
+    "graph",
+    "search",
+    "markdown"
+  ],
+  "last_updated": "2026-04-02T22:31:48.498Z"
+}

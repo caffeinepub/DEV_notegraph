@@ -1,0 +1,51 @@
+// Version: 1.0.0
+type Data__791452850<K, V> =
+  {var count : Nat__490723111; kvs : [var ?(K, V)]};
+type FolderId__432322121 = Text;
+type Folder__961547388 =
+  {
+    createdAt : Timestamp__301639476;
+    id : FolderId__432322121;
+    name : Text;
+    parentId : ?FolderId__432322121
+  };
+type Internal__8484328<K, V> =
+  {children : [var ?Node__46230540<K, V>]; data : Data__791452850<K, V>};
+type Leaf__809889148<K, V> = {data : Data__791452850<K, V>};
+type Nat__490723111 = Nat__920180692;
+type Nat__920180692 = Nat;
+type Node__46230540<K, V> =
+  {#internal : Internal__8484328<K, V>; #leaf : Leaf__809889148<K, V>};
+type NoteId__167160349 = Text;
+type NoteLink__1055037915 =
+  {fromNoteId : NoteId__167160349; toNoteId : NoteId__167160349};
+type Note__1063160515 =
+  {
+    content : Text;
+    createdAt : Timestamp__301639476;
+    folderId : ?FolderId__432322121;
+    id : NoteId__167160349;
+    tags : [Tag__618502173];
+    title : Text;
+    updatedAt : Timestamp__301639476
+  };
+type Tag__618502173 = Text;
+type Timestamp__301639476 = Int;
+actor {
+  stable folders :
+    {
+      var root : Node__46230540<FolderId__432322121, Folder__961547388>;
+      var size : Nat__490723111
+    };
+  stable links :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?NoteLink__1055037915]];
+      var elementIndex : Nat__490723111
+    };
+  stable notes :
+    {
+      var root : Node__46230540<NoteId__167160349, Note__1063160515>;
+      var size : Nat__490723111
+    }
+};
